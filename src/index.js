@@ -1,24 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Home from './components/Home';
-import Create from './components/blog/Create';
+import Create, {blogCreateAction} from './components/blog/Create';
+import BlogList from './components/blog/BlogList';
+import App, { loadBlogs } from './layout/App';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home/>,
-    children: [
-      {
-        path: "blog/create",
-        element: <Create/>
-      }
-    ]
-  }
-]);
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />} loader={loadBlogs}>
+      <Route path="/" element={<Home />}/>
+      <Route path="/blog/create" element={<Create />} action={blogCreateAction} />
+      <Route index path="/blog/list" element={<BlogList />}/>
+    </Route>
+  )
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

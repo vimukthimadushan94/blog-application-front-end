@@ -1,15 +1,19 @@
 function Footer() {
     return (
-        <div class="card">
-            <div class="card-header">
-                Featured
+        <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div className="col-md-4 d-flex align-items-center">
+            <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg className="bi" width="30" height="24"><use href="#bootstrap"></use></svg>
+            </a>
+            <span className="mb-3 mb-md-0 text-muted">© 2023 Your Blog Application</span>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+
+            <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li className="ms-3"><a className="text-muted" href="#"><svg className="bi" width="24" height="24"><use href="#twitter"></use></svg></a></li>
+                <li className="ms-3"><a className="text-muted" href="#"><svg className="bi" width="24" height="24"><use href="#instagram"></use></svg></a></li>
+                <li className="ms-3"><a className="text-muted" href="#"><svg className="bi" width="24" height="24"><use href="#facebook"></use></svg></a></li>
+            </ul>
+        </footer>
     );
 }
 

@@ -1,15 +1,11 @@
-import { Outlet } from "react-router-dom";
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
 import Create from "./blog/Create";
+import BlogList from "./blog/BlogList";
 
 function Home() {
     return (
         <>
-            <Header/>
             <Create/>
-                <Outlet/>
-            <Footer/>
+            <BlogList/>
         </>
     );
 }
