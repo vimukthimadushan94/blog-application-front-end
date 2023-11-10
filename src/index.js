@@ -3,24 +3,27 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import Home from './components/Home';
 import Create, {blogCreateAction} from './components/blog/Create';
-import BlogList from './components/blog/BlogList';
-import App, { loadBlogs } from './layout/App';
+import App from './layout/App';
+import { loadBlogs } from './components/blog/BlogList';
+import Home from './components/Home';
+import Edit from './components/blog/Edit';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} loader={loadBlogs}>
-      <Route path="/" element={<Home />}/>
-      <Route path="/blog/create" element={<Create />} action={blogCreateAction} />
-      <Route index path="/blog/list" element={<BlogList />}/>
+    <Route element={<App />} path="/">
+      <Route element={<Home/>} path="/" loader={loadBlogs}/> 
+      <Route element={<Create />} path="/blog/create" action={blogCreateAction}/>
+      <Route element={<Edit/>} path='blog/:id/edit'/>
     </Route>
   )
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router}/>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
 
 

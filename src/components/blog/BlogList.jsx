@@ -1,15 +1,16 @@
-import { useOutletContext } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
-function BlogList() {
+export default function BlogList() {
 
-    const [blogs] = useOutletContext()
+    const blogs = useLoaderData()
+
 
     return (
         <>
             <div className="container" >
                 <div className="row">
                     {blogs.map((item,index)=>(
-                    <div id={index} className="card" style={{width: '18rem',margin: '1%'}}>
+                    <div key={index} className="card" style={{width: '18rem',margin: '1%'}}>
                         <img src="" className="card-img-top" alt=""/>
                         <div className="card-body">
                             <h5 className="card-title">{item.title}</h5>
@@ -24,5 +25,16 @@ function BlogList() {
     );
 }
 
-export default BlogList
+
+export async function loadBlogs({request}){
+
+    const data = await fetch('http://localhost:8080/api/posts')
+            .then(res => res.json())
+            .then(data=>{
+                return data
+            });
+            console.log('loading blogs')
+            console.log(data)
+    return data;
+}
 

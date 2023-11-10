@@ -7,12 +7,6 @@ function Footer() {
             </a>
             <span className="mb-3 mb-md-0 text-muted">© 2023 Your Blog Application</span>
             </div>
-
-            <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li className="ms-3"><a className="text-muted" href="#"><svg className="bi" width="24" height="24"><use href="#twitter"></use></svg></a></li>
-                <li className="ms-3"><a className="text-muted" href="#"><svg className="bi" width="24" height="24"><use href="#instagram"></use></svg></a></li>
-                <li className="ms-3"><a className="text-muted" href="#"><svg className="bi" width="24" height="24"><use href="#facebook"></use></svg></a></li>
-            </ul>
         </footer>
     );
 }

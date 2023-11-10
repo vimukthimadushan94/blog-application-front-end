@@ -14,16 +14,6 @@ function Header() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                    <NavLink to="/" className="nav-link active">
-                        Home
-                    </NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink to="/blog/list" className="nav-link">
-                            Blog List
-                        </NavLink>
-                    </li>
-                    <li className="nav-item">
                         <NavLink to="/blog/create" className="nav-link">
                             <button className="btn btn-primary">Create</button>
                         </NavLink>

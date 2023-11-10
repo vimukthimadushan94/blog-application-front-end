@@ -1,6 +1,6 @@
 import { Form, redirect } from "react-router-dom";
 
-function Create() {
+export default function Create() {
 
     return (
         <>
@@ -29,9 +29,9 @@ function Create() {
     );
 }
 
-export default Create;
 
-export const  blogCreateAction =  async ({request})=>{
+
+export async function  blogCreateAction({request}){
     const data = await request.formData();
     const submission = {
         title: data.get('title'),
@@ -39,23 +39,25 @@ export const  blogCreateAction =  async ({request})=>{
     }
 
     try{
-
-        fetch('http://localhost:8080/api/posts',{
+        const {payload} = await fetch('http://localhost:8080/api/posts',{
             method:"POST",
             headers:{
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(submission)
         })
-        .then(response => response.json())
+        .then(response =>response.json())
+        .then(data=>{return data})
         .catch(error => {
             console.log('Error',error)
         })
+        console.log(payload)
 
+
+        return redirect('/')
     }catch{
-        return {error: 'Unhandled error'}
+        console.log("error...")
     }
-    
-    console.log(submission)
-    return redirect('/')
+
+   
 }

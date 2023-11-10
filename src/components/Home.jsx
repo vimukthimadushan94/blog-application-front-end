@@ -1,7 +1,7 @@
 import Create from "./blog/Create";
 import BlogList from "./blog/BlogList";
 
-function Home() {
+export default function Home() {
     return (
         <>
             <Create/>
@@ -9,5 +9,3 @@ function Home() {
         </>
     );
 }
-
-export default Home;
