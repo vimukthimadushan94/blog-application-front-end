@@ -7,14 +7,15 @@ import Create, {blogCreateAction} from './components/blog/Create';
 import App from './layout/App';
 import { loadBlogs } from './components/blog/BlogList';
 import Home from './components/Home';
-import Edit from './components/blog/Edit';
+import Edit, { loadPost, postUpdateAction } from './components/blog/Edit';
+import ErrorPage from './components/ErrorPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<App />} path="/">
+    <Route element={<App />} errorElement={<ErrorPage/>} path="/">
       <Route element={<Home/>} path="/" loader={loadBlogs}/> 
       <Route element={<Create />} path="/blog/create" action={blogCreateAction}/>
-      <Route element={<Edit/>} path='blog/:id/edit'/>
+      <Route element={<Edit/>} path='blog/:id/edit' loader={loadPost} action={postUpdateAction}/>
     </Route>
   )
 );

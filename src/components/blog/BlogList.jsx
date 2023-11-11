@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 export default function BlogList() {
 
@@ -15,7 +15,7 @@ export default function BlogList() {
                         <div className="card-body">
                             <h5 className="card-title">{item.title}</h5>
                             <p className="card-text">{item.description}</p>
-                            <button className="btn btn-primary">Go somewhere</button>
+                            <Link to={`blog/${item.id}/edit`} className="btn btn-primary">Edit</Link>
                         </div>
                     </div>
                     ))}
