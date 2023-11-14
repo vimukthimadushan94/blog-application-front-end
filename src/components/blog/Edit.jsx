@@ -1,4 +1,6 @@
 import { Form, redirect, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 
 export default function Edit(){
@@ -34,15 +36,33 @@ export default function Edit(){
 }
 
 export async function loadPost({params}){
+   const MySwal = withReactContent(Swal)
    const blogPost = await fetch('http://localhost:8080/api/posts/'+params.id)
+                     .then(
+                        MySwal.showLoading()
+                     )
                      .then(response=>response.json())
-                     .then(data=>{return data})
+                     .then(data=>{
+                        MySwal.clickConfirm()
+                        return data
+                     })
                      console.log(blogPost)
    return blogPost
 }
 
 export async function postUpdateAction({request,params}){
    console.log(params)
+   const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 4000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+         toast.onmouseenter = Swal.stopTimer;
+         toast.onmouseleave = Swal.resumeTimer;
+      }
+   });
    const data = await request.formData();
    const submission = {
        title: data.get('title'),
@@ -58,7 +78,13 @@ export async function postUpdateAction({request,params}){
            body: JSON.stringify(submission)
        })
        .then(response =>response.json())
-       .then(data=>{return data})
+       .then(data=>{
+         Toast.fire({
+            icon: "success",
+            title: `${data.title} has been updated succesfully`
+          });
+         return data
+      })
        .catch(error => {
            console.log('Error',error)
        })
