@@ -91,10 +91,7 @@ export const categorySlice = createSlice({
         })
 
         builder.addCase(deletCategories.fulfilled,(state,action)=>{
-            console.log(action.payload.id)
-            console.log(state.categories)
             state.categories = state.categories.filter((item)=>{
-                console.log(item.id!==action.payload.id)
                 return item.id!==action.payload.id
             })
         })
