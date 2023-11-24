@@ -15,7 +15,12 @@ function Header() {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
                         <NavLink to="/blog/create" className="nav-link">
-                            <button className="btn btn-primary">Create</button>
+                            <button className="btn btn-primary">Create Blog Post</button>
+                        </NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink to="/category/create" className="nav-link">
+                            <button className="btn btn-primary">Create Category</button>
                         </NavLink>
                     </li>
                 </ul>
