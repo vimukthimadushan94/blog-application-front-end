@@ -13,11 +13,13 @@ import Login from './components/auth/Login';
 import CreateCategory from './components/category/CreateCategory';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import Register from './components/auth/Register';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<App />} errorElement={<ErrorPage/>} path="/">
       <Route element={<Login/>} path='login'/>
+      <Route element={<Register/>} path='register'/>
       <Route element={<CreateCategory/>} path='category/create'/>
       <Route element={<Home/>} path="/" loader={loadBlogs}/> 
       <Route element={<Create />} path="/blog/create" action={blogCreateAction}/>

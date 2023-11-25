@@ -24,6 +24,12 @@ function Header() {
                         </NavLink>
                     </li>
                 </ul>
+                <NavLink to="/register" className="nav-link">
+                    <button className="btn btn-primary">Register</button>
+                </NavLink>
+                <NavLink to="/login" className="nav-link">
+                    <button className="btn btn-primary" style={{"margin-left":'20%'}}>Login</button>
+                </NavLink>
                 </div>
             </div>
         </nav>
