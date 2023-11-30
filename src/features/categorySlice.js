@@ -10,7 +10,14 @@ const initialState = {
 export const fetchCategories = createAsyncThunk(
     'categories/fetchCategories',
     async ()=>{
-        const res = await axios('http://localhost:8080/api/category')
+        const res = await axios('http://localhost:8080/api/category',{
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('userToken')}`, // Use 'Bearer' if it's a token-based authentication
+              // Other headers if needed
+              'Content-Type': 'application/json',
+              // ...
+            },
+          })
         const data = await res.data
         console.log(data)
         return data
@@ -25,6 +32,7 @@ export const createCategories = createAsyncThunk(
                 method:"POST",
                 headers:{
                     'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('userToken')
                 },
                 body: JSON.stringify({name:category})
             })

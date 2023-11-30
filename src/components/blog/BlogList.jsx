@@ -28,13 +28,20 @@ export default function BlogList() {
 
 export async function loadBlogs({request}){
 
-    const data = await fetch('http://localhost:8080/api/posts')
+    const data = await fetch('http://localhost:8080/api/posts',{
+                method: 'GET',
+                headers: {
+                'Authorization': `Bearer ${localStorage.getItem('userToken')}`, // Use 'Bearer' if it's a token-based authentication
+                // Other headers if needed
+                'Content-Type': 'application/json',
+                // ...
+                },
+            })
             .then(res => res.json())
             .then(data=>{
                 return data
             });
             console.log('loading blogs')
-            console.log(data)
     return data;
 }
 

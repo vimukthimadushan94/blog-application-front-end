@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCategories } from "../../features/categorySlice";
+import CategoryList from "./CategoryList";
 
 export default function CreateCategory() {
 
@@ -21,6 +22,7 @@ export default function CreateCategory() {
 
     return (
         <>
+            <CategoryList/>
             <form onSubmit={addCatogoryHandler}>
                 <div className="mb-3">
                     <label className="form-label">Title</label>
